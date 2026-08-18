@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/widgets/tounsi_pattern.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -11,13 +12,16 @@ class SettingsScreen extends StatelessWidget {
       children: [
         const TounsiPattern(height: 34),
         const SizedBox(height: 8),
-        Text('Einstellungen',
-            style: Theme.of(context).textTheme.headlineLarge),
+        Text('Einstellungen', style: Theme.of(context).textTheme.headlineLarge),
         const SizedBox(height: 22),
         const _Tile(Icons.language_rounded, 'Deine Sprache', 'Deutsch'),
         const _Tile(Icons.palette_outlined, 'Design', 'Hell'),
         const _Tile(Icons.schedule_rounded, 'Tägliches Ziel', '10 Minuten'),
-        const _Tile(Icons.notifications_none_rounded, 'Benachrichtigungen', 'Aus'),
+        const _Tile(
+          Icons.notifications_none_rounded,
+          'Benachrichtigungen',
+          'Aus',
+        ),
         const SizedBox(height: 18),
         const _Tile(Icons.info_outline_rounded, 'Über TounsiGo', null),
         const _Tile(Icons.lock_outline_rounded, 'Datenschutz', null),

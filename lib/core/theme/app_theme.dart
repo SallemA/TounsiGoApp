@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+
 import 'app_colors.dart';
 
 abstract final class AppTheme {
   static ThemeData get light {
-    final scheme = ColorScheme.fromSeed(
-      seedColor: AppColors.terracotta,
-      brightness: Brightness.light,
-      surface: AppColors.cream,
-    ).copyWith(
-      primary: AppColors.terracotta,
-      secondary: AppColors.olive,
-      surface: AppColors.cream,
-      onSurface: AppColors.ink,
-      outline: AppColors.border,
-    );
+    final scheme =
+        ColorScheme.fromSeed(
+          seedColor: AppColors.terracotta,
+          brightness: Brightness.light,
+          surface: AppColors.cream,
+        ).copyWith(
+          primary: AppColors.terracotta,
+          secondary: AppColors.olive,
+          surface: AppColors.cream,
+          onSurface: AppColors.ink,
+          outline: AppColors.border,
+        );
 
     return ThemeData(
       useMaterial3: true,
@@ -37,14 +39,8 @@ abstract final class AppTheme {
           color: AppColors.ink,
           fontWeight: FontWeight.w700,
         ),
-        bodyLarge: TextStyle(
-          color: AppColors.ink,
-          height: 1.45,
-        ),
-        bodyMedium: TextStyle(
-          color: AppColors.mutedInk,
-          height: 1.45,
-        ),
+        bodyLarge: TextStyle(color: AppColors.ink, height: 1.45),
+        bodyMedium: TextStyle(color: AppColors.mutedInk, height: 1.45),
       ),
       cardTheme: CardThemeData(
         color: AppColors.card,
@@ -63,10 +59,7 @@ abstract final class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
           ),
-          textStyle: const TextStyle(
-            fontWeight: FontWeight.w800,
-            fontSize: 15,
-          ),
+          textStyle: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
         ),
       ),
       navigationBarTheme: NavigationBarThemeData(

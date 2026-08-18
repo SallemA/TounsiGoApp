@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/tounsi_pattern.dart';
 
@@ -70,8 +71,9 @@ class _PracticeCard extends StatelessWidget {
                   const SizedBox(height: 16),
                   FilledButton(
                     onPressed: () {},
-                    style:
-                        FilledButton.styleFrom(backgroundColor: AppColors.olive),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: AppColors.olive,
+                    ),
                     child: const Text('Starten'),
                   ),
                 ],
