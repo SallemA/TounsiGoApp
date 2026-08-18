@@ -62,9 +62,9 @@ abstract final class AppTheme {
           textStyle: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
         ),
       ),
-      navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: const Color(0xFFFFFCF7),
-        indicatorColor: const Color(0xFFF8DED3),
+      navigationBarTheme: const NavigationBarThemeData(
+        backgroundColor: Color(0xFFFFFCF7),
+        indicatorColor: Color(0xFFF8DED3),
       ),
     );
   }

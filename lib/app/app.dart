@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
 
 import '../core/theme/app_theme.dart';
-import '../features/home/home_screen.dart';
-import '../features/lessons/lessons_screen.dart';
-import '../features/practice/practice_screen.dart';
-import '../features/settings/settings_screen.dart';
+import '../features/onboarding/onboarding_flow.dart';
+import 'main_shell.dart';
 
-class TounsiGoApp extends StatelessWidget {
+class TounsiGoApp extends StatefulWidget {
   const TounsiGoApp({super.key});
+
+  @override
+  State<TounsiGoApp> createState() => _TounsiGoAppState();
+}
+
+class _TounsiGoAppState extends State<TounsiGoApp> {
+  bool onboardingCompleted = false;
+  String languageCode = 'de';
+  String learningGoal = 'travel';
+
+  void finishOnboarding({
+    required String languageCode,
+    required String learningGoal,
+  }) {
+    setState(() {
+      this.languageCode = languageCode;
+      this.learningGoal = learningGoal;
+      onboardingCompleted = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,60 +33,9 @@ class TounsiGoApp extends StatelessWidget {
       title: 'TounsiGo',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
-      home: const MainShell(),
-    );
-  }
-}
-
-class MainShell extends StatefulWidget {
-  const MainShell({super.key});
-
-  @override
-  State<MainShell> createState() => _MainShellState();
-}
-
-class _MainShellState extends State<MainShell> {
-  int currentIndex = 0;
-
-  final pages = const [
-    HomeScreen(),
-    LessonsScreen(),
-    PracticeScreen(),
-    SettingsScreen(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: IndexedStack(index: currentIndex, children: pages),
-      ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: currentIndex,
-        onDestinationSelected: (index) => setState(() => currentIndex = index),
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: 'Start',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.school_outlined),
-            selectedIcon: Icon(Icons.school),
-            label: 'Lernen',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.mic_none_rounded),
-            selectedIcon: Icon(Icons.mic_rounded),
-            label: 'Üben',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.settings_outlined),
-            selectedIcon: Icon(Icons.settings),
-            label: 'Einstellungen',
-          ),
-        ],
-      ),
+      home: onboardingCompleted
+          ? MainShell(languageCode: languageCode, learningGoal: learningGoal)
+          : OnboardingFlow(onFinished: finishOnboarding),
     );
   }
 }

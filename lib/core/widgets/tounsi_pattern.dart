@@ -4,6 +4,7 @@ import '../theme/app_colors.dart';
 
 class TounsiPattern extends StatelessWidget {
   const TounsiPattern({super.key, this.height = 64});
+
   final double height;
 
   @override
@@ -25,15 +26,17 @@ class _PatternPainter extends CustomPainter {
       ..color = AppColors.sand.withValues(alpha: 0.55);
 
     const step = 26.0;
+
     for (double y = 0; y < size.height + step; y += step) {
       for (double x = 0; x < size.width + step; x += step) {
-        final c = Offset(x, y);
+        final center = Offset(x, y);
         final path = Path()
-          ..moveTo(c.dx, c.dy - 8)
-          ..lineTo(c.dx + 8, c.dy)
-          ..lineTo(c.dx, c.dy + 8)
-          ..lineTo(c.dx - 8, c.dy)
+          ..moveTo(center.dx, center.dy - 8)
+          ..lineTo(center.dx + 8, center.dy)
+          ..lineTo(center.dx, center.dy + 8)
+          ..lineTo(center.dx - 8, center.dy)
           ..close();
+
         canvas.drawPath(path, paint);
       }
     }
